@@ -19,47 +19,47 @@ import com.qa.util.JSONUtil;
 public class TraineeMapRepository implements TraineeRepository {
 
 	private final Long INITIAL_COUNT = 1L;
-	private Map<Long, Trainee> accountMap;
+	private Map<Long, Trainee> trainieetMap;
 	private Long ID;
 
 	@Inject
 	private JSONUtil util;
 
 	public TraineeMapRepository() {
-		this.accountMap = new HashMap<Long, Trainee>();
+		this.trainieetMap = new HashMap<Long, Trainee>();
 		ID = INITIAL_COUNT;
 		initAccountMap();
 	}
 
 	
 	public String getAllTrainees() {
-		return util.getJSONForObject(accountMap.values());
+		return util.getJSONForObject(trainieetMap.values());
 	}
 
 	
-	public String createTrainee(String account) {
+	public String createTrainee(String trainee) {
 		ID++;
-		Trainee newAccount = util.getObjectForJSON(account, Trainee.class);
-		accountMap.put(ID, newAccount);
-		return account;
+		Trainee newAccount = util.getObjectForJSON(trainee, Trainee.class);
+		trainieetMap.put(ID, newAccount);
+		return trainee;
 	}
 
 	
 	public String updateTrainee(Long id, String accountToUpdate) {
 		Trainee newAccount = util.getObjectForJSON(accountToUpdate, Trainee.class);
-		accountMap.put(id, newAccount);
+		trainieetMap.put(id, newAccount);
 		return accountToUpdate;
 	}
 
 	
 	public String deleteTrainee(Long id) {
-		accountMap.remove(id);
+		trainieetMap.remove(id);
 		return "{\"message\": \"accout sucessfully removed\"}";
 	}
 
 	private void initAccountMap() {
-		Trainee account = new Trainee();
-		accountMap.put(1L, account);
+		Trainee trainee = new Trainee();
+		trainieetMap.put(1L, trainee);
 	}
 
 }

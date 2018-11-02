@@ -36,7 +36,7 @@ public class TraineeDBRepository implements TraineeRepository {
 	public String createTrainee(String accout) {
 		Trainee anAccount = util.getObjectForJSON(accout, Trainee.class);
 		manager.persist(anAccount);
-		return "{\"message\": \"account has been sucessfully added\"}";
+		return "{\"message\": \"trainee has been sucessfully added\"}";
 	}
 
 	@Transactional(REQUIRED)
@@ -47,7 +47,7 @@ public class TraineeDBRepository implements TraineeRepository {
 			accountFromDB = updatedAccount;
 			manager.merge(accountFromDB);
 		}
-		return "{\"message\": \"account sucessfully updated\"}";
+		return "{\"message\": \"trainee sucessfully updated\"}";
 	}
 
 	
@@ -57,7 +57,7 @@ public class TraineeDBRepository implements TraineeRepository {
 		if (accountInDB != null) {
 			manager.remove(accountInDB);
 		}
-		return "{\"message\": \"account sucessfully deleted\"}";
+		return "{\"message\": \"trainee sucessfully deleted\"}";
 	}
 
 	private Trainee findTrainee(Long id) {

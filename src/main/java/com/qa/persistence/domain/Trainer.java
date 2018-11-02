@@ -2,6 +2,7 @@ package com.qa.persistence.domain;
 
 	import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 	import javax.persistence.GeneratedValue;
@@ -10,24 +11,25 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.CascadeType;
+
 
 import antlr.collections.List;
 
 	@Entity
 	public class Trainer {
 
+		private Long classroomId;
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Id
-		private Long classroomId;
 		private Long trainerID;
 		@Column(length=25)
         private String trainerFirstName;
 		@Column(length=25)
 		private String trainerLastName;
-		 @OneToMany(cascade = CascadeType.ALL) 
-			 @JoinColumn(name="trainerID")
-			    private ArrayList trainees = new ArrayList();
+		@OneToMany(cascade = CascadeType.ALL) 
+		@JoinColumn(name="trainerID")
+		
+		private ArrayList trainees = new ArrayList();
 
 
 	public Trainer(){
