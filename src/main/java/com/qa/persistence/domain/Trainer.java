@@ -19,7 +19,7 @@ import antlr.collections.List;
 	public class Trainer {
 
 		private Long classroomId;
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 		@Id
 		private Long trainerID;
 		@Column(length=25)
